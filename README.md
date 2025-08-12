@@ -30,19 +30,33 @@ This project implements a modern data warehouse using the medallion architecture
    ```sql
    -- Create dimension tables
    scripts/silver/Create_Silver_Dimension_Tables.sql
-   -- Populate dimensions (run after loading bronze data)
-   scripts/silver/Populate_Silver_Dimensions.sql
    ```
 
 4. **Create Gold Layer**:
    ```sql
    -- Create fact tables and data marts
    scripts/gold/Create_Gold_Data_Marts.sql
-   -- Populate data marts (run after silver layer is ready)
+   ```
+
+5. **Load Sample Data** (for testing):
+   ```sql
+   -- Insert sample data into bronze tables
+   scripts/Load_Sample_Data.sql
+   ```
+
+6. **Transform to Silver**:
+   ```sql
+   -- Populate dimension tables with cleaned data
+   scripts/silver/Populate_Silver_Dimensions.sql
+   ```
+
+7. **Transform to Gold**:
+   ```sql
+   -- Create aggregated data marts
    scripts/gold/Populate_Gold_Data_Marts.sql
    ```
 
-5. **Validate Setup**:
+8. **Validate Setup**:
    ```sql
    -- Run comprehensive testing script
    scripts/Test_Data_Warehouse.sql
